@@ -109,11 +109,11 @@ $sheetData = $spreadsheet->getActiveSheet()->toArray();
     }
 
     function trenddata($arr,$row){
-        if($arr[$row][6]=="YES"){
+        if(strtoupper($arr[$row][6])=="YES"){
             $r="UP TREND";
-        }elseif($arr[$row][7]=="YES"){
+        }elseif(strtoupper($arr[$row][7])=="YES"){
             $r="DOWN TREND";
-        }elseif($arr[$row][8]=="YES"){
+        }elseif(strtoupper($arr[$row][8])=="YES"){
             $r="SIDEWAYS";
         }
         return $r;
