@@ -85,8 +85,10 @@ $sheetData = $spreadsheet->getActiveSheet()->toArray();
                 $buy_sell_color="#FF0000";
                 break;
             case "wait":
-                // $buy_sell_color="#F68900";
                 $buy_sell_color="#FF0000";
+                break;
+            case "hold":
+                $buy_sell_color="#630678";
                 break;
             case "hold long":
                 $buy_sell_color="#630678";
@@ -1081,28 +1083,28 @@ $("#edit_button").click(function(e){
     
     
     edit_add_input("#card1_buysell","child_input","text",100);
-    edit_add_input("#card1_sl","child_input","number",80);
-    edit_add_input("#card1_target","child_input","number",80);
+    edit_add_input("#card1_sl","child_input","text",80);
+    edit_add_input("#card1_target","child_input","text",80);
 
     edit_add_input("#card2_buysell","child_input","text",100);
-    edit_add_input("#card2_sl","child_input","number",80);
-    edit_add_input("#card2_target","child_input","number",80);
+    edit_add_input("#card2_sl","child_input","text",80);
+    edit_add_input("#card2_target","child_input","text",80);
 
     edit_add_input("#card3_buysell","child_input","text",100);
-    edit_add_input("#card3_sl","child_input","number",80);
-    edit_add_input("#card3_target","child_input","number",80);
+    edit_add_input("#card3_sl","child_input","text",80);
+    edit_add_input("#card3_target","child_input","text",80);
 
     edit_add_input("#card4_buysell","child_input","text",100);
-    edit_add_input("#card4_sl","child_input","number",80);
-    edit_add_input("#card4_target","child_input","number",80);
+    edit_add_input("#card4_sl","child_input","text",80);
+    edit_add_input("#card4_target","child_input","text",80);
 
     edit_add_input("#card5_buysell","child_input","text",100);
-    edit_add_input("#card5_sl","child_input","number",80);
-    edit_add_input("#card5_target","child_input","number",80);
+    edit_add_input("#card5_sl","child_input","text",80);
+    edit_add_input("#card5_target","child_input","text",80);
 
     edit_add_input("#card6_buysell","child_input","text",100);
-    edit_add_input("#card6_sl","child_input","number",80);
-    edit_add_input("#card6_target","child_input","number",80);
+    edit_add_input("#card6_sl","child_input","text",80);
+    edit_add_input("#card6_target","child_input","text",80);
 
     edit_add_input("#foot_card_1","child_input","text",500);
     edit_add_input("#foot_card_2","child_input","text",500);
@@ -1144,7 +1146,8 @@ function edit_add_input(parent_div,child_div,input_type,width){
 function edit_add_select(parent_div,child_div,select_var){
     if(enable_editing){
 
-        this_val= $(parent_div).html().toUpperCase();
+        this_val= $(parent_div).html().replaceAll(' ','').toUpperCase();
+        console.log(this_val);
         $(parent_div).html(select_var);
         $(parent_div).children(child_div).val(this_val);
         
@@ -1175,6 +1178,18 @@ function get_buy_sell_color(val_ue){
                 break;
             case "wait":
                 buy_sell_color="#F68900";
+                break;
+            case "long":
+                buy_sell_color="#630678";
+                break;
+            case "short":
+                buy_sell_color="#001AFF";
+                break;
+            case "bound":
+                buy_sell_color="#56150C";
+                break;
+            case "hold":
+                buy_sell_color="#630678";
                 break;
             case "hold long":
                 buy_sell_color="#630678";
@@ -1229,7 +1244,11 @@ var buy_sell_select="";
 buy_sell_select+='<select class="select_buy_Sell" style="width:100px;">';
 buy_sell_select+='<option value="BUY">BUY</option>';
 buy_sell_select+='<option value="SELL">SELL</option>';
+buy_sell_select+='<option value="HOLD">HOLD</option>';
 buy_sell_select+='<option value="WAIT">WAIT</option>';
+buy_sell_select+='<option value="LONG">LONG</option>';
+buy_sell_select+='<option value="SHORT">SHORT</option>';
+buy_sell_select+='<option value="BOUND">BOUND</option>';
 buy_sell_select+='<option value="HOLD LONG" id="hold long">HOLD LONG</option>';
 buy_sell_select+='<option value="HOLD SHORT">HOLD SHORT</option>';
 buy_sell_select+='<option value="RANGE BOUND">RANGE BOUND</option>';
