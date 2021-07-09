@@ -77,7 +77,7 @@ $sheetData = $spreadsheet->getActiveSheet()->toArray();
 
     function get_buy_sell_color($val){
         $buy_sell_color="";
-        switch(strtolower($val)){
+        switch(strtolower(trim($val))){
             case "buy":
                 $buy_sell_color="#0E901F";
                 break;
@@ -85,9 +85,11 @@ $sheetData = $spreadsheet->getActiveSheet()->toArray();
                 $buy_sell_color="#FF0000";
                 break;
             case "wait":
-                // $buy_sell_color="#F68900";
-                $buy_sell_color="#FF0000";
+                $buy_sell_color="#F68900";
+                // $buy_sell_color="#FF0000";
                 break;
+                    $buy_sell_color="#630678";
+                    break;
             case "hold long":
                 $buy_sell_color="#630678";
                 break;
@@ -142,6 +144,12 @@ endif;
 
         .buy-t-s{
             font-size:16px;
+        }
+
+        @media (min-width: 1200px) {
+        .container {
+            max-width: 1350px;
+        }
         }
     
     </style>
@@ -231,7 +239,7 @@ endif;
                                             <div style="height:13px; border-radius:10px 10px 0px 0px; background:<?=get_buy_sell_color($sheetData[10][0]);?>;">
                                             </div>
                                              <div class="" style="padding:0px;">
-                                                <p class="m-0 mt-1 p-0 buy-t-s" id="edit_card1_buysell_txt"><?= $sheetData[10][0];?></p>
+                                                <p class="m-0 mt-1 p-0 buy-t-s" id="edit_card1_buysell_txt"><?= strtoupper($sheetData[10][0]);?></p>
                                                 <!-- <p class="m-0 mb-3 pb-1 buy-t-s" style="color:<?=get_buy_sell_color(substr($sheetData[10][0],0,4));?>;"><?= dataorwait(substr($sheetData[10][0],5,12));?></p> -->
                                                 <p class="m-0 mb-3 pb-1 buy-t-s" style="color:<?=get_buy_sell_color($sheetData[10][0]);?>;" id="card1_buysell"><?= dataorwait($sheetData[10][1]);?></p>
                                             </div>
@@ -358,7 +366,7 @@ endif;
                                             <div style="height:13px; border-radius:10px 10px 0px 0px; background:<?=get_buy_sell_color($sheetData[17][0]);?>;">
                                             </div>
                                              <div class="" style="padding:0px;">
-                                                <p class="m-0 mt-1 p-0 buy-t-s" id="edit_card2_buysell_txt"><?=$sheetData[17][0];?></p>
+                                                <p class="m-0 mt-1 p-0 buy-t-s" id="edit_card2_buysell_txt"><?=strtoupper($sheetData[17][0]);?></p>
                                                 <!-- <p class="m-0 mb-3 pb-1 buy-t-s" style="color:<?=get_buy_sell_color($sheetData[17][0]);?>;"><?= dataorwait($sheetData[17][0]);?></p> -->
                                                 <p class="m-0 mb-3 pb-1 buy-t-s" style="color:<?=get_buy_sell_color($sheetData[17][0]);?>;" id="card2_buysell"><?= dataorwait($sheetData[17][1]);?></p>
                                             </div>
@@ -485,7 +493,7 @@ endif;
                                             <div style="height:13px; border-radius:10px 10px 0px 0px; background:<?=get_buy_sell_color($sheetData[24][0]);?>;">
                                             </div>
                                              <div class="" style="padding:0px;">
-                                                <p class="m-0 mt-1 p-0 buy-t-s" id="edit_card3_buysell_txt"><?=$sheetData[24][0];?></p>
+                                                <p class="m-0 mt-1 p-0 buy-t-s" id="edit_card3_buysell_txt"><?=strtoupper($sheetData[24][0]);?></p>
                                                 <!-- <p class="m-0 mb-3 pb-1 buy-t-s" style="color:<?=get_buy_sell_color(substr($sheetData[24][0],0,4));?>;"><?= dataorwait(substr($sheetData[24][0],5,12));?></p> -->
                                                 <p class="m-0 mb-3 pb-1 buy-t-s" style="color:<?=get_buy_sell_color($sheetData[24][0]);?>;" id="card3_buysell"><?= dataorwait($sheetData[24][1]);?></p>
                                             </div>
@@ -613,7 +621,7 @@ endif;
                                             <div style="height:13px; border-radius:10px 10px 0px 0px; background:<?=get_buy_sell_color($sheetData[31][0]);?>;">
                                             </div>
                                              <div class="" style="padding:0px;">
-                                                <p class="m-0 mt-1 p-0 buy-t-s" id="edit_card4_buysell_txt"><?=$sheetData[31][0];?></p>
+                                                <p class="m-0 mt-1 p-0 buy-t-s" id="edit_card4_buysell_txt"><?=strtoupper($sheetData[31][0]);?></p>
                                                 <!-- <p class="m-0 mb-3 pb-1 buy-t-s" style="color:<?=get_buy_sell_color(substr($sheetData[31][0],0,4));?>;"><?= dataorwait(substr($sheetData[31][0],5,12));?></p> -->
                                                 <p class="m-0 mb-3 pb-1 buy-t-s" style="color:<?=get_buy_sell_color($sheetData[31][0]);?>;"  id="card4_buysell"><?= dataorwait($sheetData[31][1]);?></p>
                                             </div>
@@ -824,20 +832,20 @@ $("#edit_button").click(function(e){
     
     
     edit_add_input("#card1_buysell","child_input","text",100);
-    edit_add_input("#card1_sl","child_input","number",80);
-    edit_add_input("#card1_target","child_input","number",80);
+    edit_add_input("#card1_sl","child_input","text",80);
+    edit_add_input("#card1_target","child_input","text",80);
 
     edit_add_input("#card2_buysell","child_input","text",100);
-    edit_add_input("#card2_sl","child_input","number",80);
-    edit_add_input("#card2_target","child_input","number",80);
+    edit_add_input("#card2_sl","child_input","text",80);
+    edit_add_input("#card2_target","child_input","text",80);
 
     edit_add_input("#card3_buysell","child_input","text",100);
-    edit_add_input("#card3_sl","child_input","number",80);
-    edit_add_input("#card3_target","child_input","number",80);
+    edit_add_input("#card3_sl","child_input","text",80);
+    edit_add_input("#card3_target","child_input","text",80);
 
     edit_add_input("#card4_buysell","child_input","text",100);
-    edit_add_input("#card4_sl","child_input","number",80);
-    edit_add_input("#card4_target","child_input","number",80);
+    edit_add_input("#card4_sl","child_input","text",80);
+    edit_add_input("#card4_target","child_input","text",80);
 
     edit_add_input("#foot_card_1","child_input","text",500);
     edit_add_input("#foot_card_2","child_input","text",500);
@@ -873,7 +881,7 @@ function edit_add_input(parent_div,child_div,input_type,width){
 function edit_add_select(parent_div,child_div,select_var){
     if(enable_editing){
 
-        this_val= $(parent_div).html().toUpperCase();
+        this_val= $(parent_div).html().replaceAll(' ','').toUpperCase();
         $(parent_div).html(select_var);
         $(parent_div).children(child_div).val(this_val);
         

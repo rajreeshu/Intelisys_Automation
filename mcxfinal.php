@@ -76,8 +76,9 @@ $sheetData = $spreadsheet->getActiveSheet()->toArray();
     
 
     function get_buy_sell_color($val){
+        // print_r(strlen($val));
         $buy_sell_color="";
-        switch(strtolower($val)){
+        switch(strtolower(trim($val))){
             case "buy":
                 $buy_sell_color="#0E901F";
                 break;
@@ -85,7 +86,7 @@ $sheetData = $spreadsheet->getActiveSheet()->toArray();
                 $buy_sell_color="#FF0000";
                 break;
             case "wait":
-                $buy_sell_color="#FF0000";
+                $buy_sell_color="#F68900";
                 break;
             case "hold":
                 $buy_sell_color="#630678";
@@ -234,7 +235,7 @@ endif;
                                     <div class="col"  style="margin:0px; padding:0px;">
                                         <div class="font-weight-bold text-center mb-2" style="border-radius:10px 10px 10px 10px; box-shadow:-2px 2px 3px #d0d0d0;">
                                             
-                                            <div style="height:13px; border-radius:10px 10px 0px 0px; background:<?=get_buy_sell_color($sheetData[10][0]);?>;">
+                                            <div style="height:13px; border-radius:10px 10px 0px 0px; background:<?=get_buy_sell_color($sheetData[9][0]);?>;">
                                             </div>
                                              <div class="" style="padding:0px;">
                                                 <p class="m-0 mt-1 p-0 buy-t-s" id="edit_card1_buysell_txt"><?= strtoupper($sheetData[9][0]);?></p>
@@ -616,7 +617,7 @@ endif;
                                     <div class="col "  style="margin:0px; padding:0px;">
                                         <div class="font-weight-bold text-center mb-2" style="border-radius:10px 10px 10px 10px; box-shadow:-2px 2px 3px #d0d0d0;">
                                             
-                                            <div style="height:13px; border-radius:10px 10px 0px 0px; background:<?=get_buy_sell_color($sheetData[32][0]);?>;">
+                                            <div style="height:13px; border-radius:10px 10px 0px 0px; background:<?=get_buy_sell_color($sheetData[33][0]);?>;">
                                             </div>
                                              <div class="" style="padding:0px;">
                                                 <p class="m-0 mt-1 p-0 buy-t-s" id="edit_card4_buysell_txt"><?=strtoupper($sheetData[33][0]);?></p>
