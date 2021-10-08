@@ -122,6 +122,25 @@ $sheetData = $spreadsheet->getActiveSheet()->toArray();
         // return $sheetData;
     }
 
+    function get_trend_color($val_ue){
+        $trend_color="";
+        switch($val_ue){
+            case "UP TREND":
+                $trend_color="#0E901F";
+                break;
+            case "DOWN TREND":
+                $trend_color="#FF0000";
+                break;
+            case "SIDEWAYS":
+                $trend_colorr="#F68900";
+                break;
+            default:
+            $trend_color="#d0d0d0";
+                break;
+        }
+        return $trend_color;
+    }
+
 
 
 endif;
@@ -288,7 +307,7 @@ endif;
 
                             <div class="col-3 p-0 pt-4 text-center" style=" height:100px; color:#9C7800;">
                                 
-                                <h6>Trend:<br><b><span><?=trenddata($sheetData,7);?></span></b></h6>
+                                <h6>Trend:<br><b><span class="trend_data_val" style="color:<?=get_trend_color(trenddata($sheetData,7));?>"><?=trenddata($sheetData,7);?></span></b></h6>
                                 <br>
                                 <h6>Magical Figures</h6><h4 id="edit_card1_magic" style="font-weight:bold;"><?= $sheetData[9][6];?></h4>
                             </div>
@@ -415,7 +434,7 @@ endif;
 
                             <div class="col-3 p-0 pt-4 text-center" style=" height:100px; color:#9C7800;">
                                 
-                                <h6>Trend:<br><b><?=trenddata($sheetData,14);?></b></h6>
+                                <h6>Trend:<br><b style="color:<?=get_trend_color(trenddata($sheetData,14));?>"><?=trenddata($sheetData,14);?></b></h6>
                                 <br>
                                 <h6>Magical Figures</h6><h4 id="edit_card2_magic" style="font-weight:bold;"><?= $sheetData[16][6];?></h4>
                             </div>
@@ -542,7 +561,7 @@ endif;
 
                             <div class="col-3 p-0 pt-4 text-center" style=" height:100px; color:#9C7800;">
                                 
-                                <h6>Trend:<br><b><?=trenddata($sheetData,21);?></b></h6>
+                                <h6>Trend:<br><b style="color:<?=get_trend_color(trenddata($sheetData,21));?>"><?=trenddata($sheetData,21);?></b></h6>
                                 <br>
                                 <h6>Magical Figures</h6><h4 id="edit_card3_magic" style="font-weight:bold;"><?= $sheetData[23][6];?></h4>
                             </div>
@@ -671,7 +690,7 @@ endif;
 
                             <div class="col-3 p-0 pt-4 text-center" style=" height:100px; color:#9C7800;">
                                 
-                                <h6>Trend:<br><b><?=trenddata($sheetData,28);?></b></h6>
+                                <h6>Trend:<br><b style="color:<?=get_trend_color(trenddata($sheetData,28));?>"><?=trenddata($sheetData,28);?></b></h6>
                                 <br>
                                 <h6>Magical Figures</h6><h4 id="edit_card4_magic" style="font-weight:bold;"><?= $sheetData[30][6];?></h4>
                             </div>
@@ -928,6 +947,26 @@ function get_buy_sell_color(val_ue){
         }
         return buy_sell_color;
     }
+
+    function get_trend_color(val_ue){
+        buy_sell_color="";
+        switch(val_ue.toLowerCase()){
+            case "UP TREND":
+                buy_sell_color="#0E901F";
+                break;
+            case "DOWN TREND":
+                buy_sell_color="#FF0000";
+                break;
+            case "SIDEWAYS":
+                buy_sell_color="#F68900";
+                break;
+            default:
+                buy_sell_color="#d0d0d0";
+                break;
+        }
+        return buy_sell_color;
+    }
+
 
 var month_select="";
 month_select+='<select class="select_month">';

@@ -123,6 +123,25 @@ $sheetData = $spreadsheet->getActiveSheet()->toArray();
         // return $sheetData;
     }
 
+    function get_trend_color($val_ue){
+        $trend_color="";
+        switch($val_ue){
+            case "UP TREND":
+                $trend_color="#0E901F";
+                break;
+            case "DOWN TREND":
+                $trend_color="#FF0000";
+                break;
+            case "SIDEWAYS":
+                $trend_colorr="#F68900";
+                break;
+            default:
+            $trend_color="#d0d0d0";
+                break;
+        }
+        return $trend_color;
+    }
+
 
 
 endif;
@@ -287,7 +306,7 @@ endif;
 
                             <div class="col-3 p-0 pt-4 text-center" style=" height:100px; color:#9C7800;">
                                 
-                                <h6>Trend:<br><b><span><?=trenddata($sheetData,6);?></span></b></h6>
+                                <h6>Trend:<br><b><span  style="color:<?=get_trend_color(trenddata($sheetData,6));?>"><?=trenddata($sheetData,6);?></span></b></h6>
                                 <br>
                                 <h6>Magical Figures</h6><h4 id="edit_card1_magic"><?= $sheetData[8][6];?></h4>
                             </div>
@@ -414,7 +433,7 @@ endif;
 
                             <div class="col-3 p-0 pt-4 text-center" style=" height:100px; color:#9C7800;">
                                 
-                                <h6>Trend:<br><b><?=trenddata($sheetData,14);?></b></h6>
+                                <h6>Trend:<br><b  style="color:<?=get_trend_color(trenddata($sheetData,14));?>"><?=trenddata($sheetData,14);?></b></h6>
                                 <br>
                                 <h6>Magical Figures</h6><h4 id="edit_card2_magic"><?= $sheetData[16][6];?></h4>
                             </div>
@@ -541,7 +560,7 @@ endif;
 
                             <div class="col-3 p-0 pt-4 text-center" style=" height:100px; color:#9C7800;">
                                 
-                                <h6>Trend:<br><b><?=trenddata($sheetData,22);?></b></h6>
+                                <h6>Trend:<br><b style="color:<?=get_trend_color(trenddata($sheetData,22));?>"><?=trenddata($sheetData,22);?></b></h6>
                                 <br>
                                 <h6>Magical Figures</h6><h4 id="edit_card3_magic"><?= $sheetData[24][6];?></h4>
                             </div>
@@ -670,7 +689,7 @@ endif;
 
                             <div class="col-3 p-0 pt-4 text-center" style=" height:100px; color:#9C7800;">
                                 
-                                <h6>Trend:<br><b><?=trenddata($sheetData,30);?></b></h6>
+                                <h6>Trend:<br><b  style="color:<?=get_trend_color(trenddata($sheetData,30));?>"><?=trenddata($sheetData,30);?></b></h6>
                                 <br>
                                 <h6>Magical Figures</h6><h4 id="edit_card4_magic"><?= $sheetData[32][6];?></h4>
                             </div>
@@ -799,7 +818,7 @@ endif;
 
                             <div class="col-3 p-0 pt-4 text-center" style=" height:100px; color:#9C7800;">
                                 
-                                <h6>Trend:<br><b><span><?=trenddata($sheetData,37);?></span></b></h6>
+                                <h6>Trend:<br><b><span  style="color:<?=get_trend_color(trenddata($sheetData,37));?>"><?=trenddata($sheetData,37);?></span></b></h6>
                                 <br>
                                 <h6>Magical Figures</h6><h4 id="edit_card5_magic"><?= $sheetData[39][6];?></h4>
                             </div>
@@ -927,7 +946,7 @@ endif;
 
                             <div class="col-3 p-0 pt-4 text-center" style=" height:100px; color:#9C7800;">
                                 
-                                <h6>Trend:<br><b><span><?=trenddata($sheetData,43);?></span></b></h6>
+                                <h6>Trend:<br><b><span  style="color:<?=get_trend_color(trenddata($sheetData,43));?>"><?=trenddata($sheetData,43);?></span></b></h6>
                                 <br>
                                 <h6>Magical Figures</h6><h4 id="edit_card6_magic"><?= $sheetData[45][6];?></h4>
                             </div>

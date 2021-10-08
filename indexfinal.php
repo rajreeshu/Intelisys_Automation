@@ -114,6 +114,25 @@ $sheetData = $spreadsheet->getActiveSheet()->toArray();
         // return $sheetData;
     }
 
+    function get_trend_color($val_ue){
+        $trend_color="";
+        switch($val_ue){
+            case "UP TREND":
+                $trend_color="#0E901F";
+                break;
+            case "DOWN TREND":
+                $trend_color="#FF0000";
+                break;
+            case "SIDEWAYS":
+                $trend_colorr="#F68900";
+                break;
+            default:
+            $trend_color="#d0d0d0";
+                break;
+        }
+        return $trend_color;
+    }
+
 
 
 endif;
@@ -226,7 +245,7 @@ endif;
 
 
                             <div class="col-3 p-0 pt-2 text-center" style=" height:100px; color:#9C7800;">
-                                <h5 style="padding:0px; margin:0px;">Trend:</h5 style="padding:0px; margin:0px;"><h5 id="card1_trend"><?=trenddata($sheetData,6);?></h5>
+                                <h5 style="padding:0px; margin:0px;">Trend:</h5 style="padding:0px; margin:0px;"><h5 id="card1_trend"  style="color:<?=get_trend_color(trenddata($sheetData,6));?>"><?=trenddata($sheetData,6);?></h5>
                                 <h6 style=" font-weight:bold;">Break out Point/<br>Magical Figures</h6><b><span id="edit_nifty_magic" style="font-size:20px; font-weight:bold;"><?= $sheetData[8][6];?></b>
                             </div>
                         
@@ -294,7 +313,7 @@ endif;
 
 
                             <div class="col-3 p-0 pt-2 text-center" style=" height:100px; color:#9C7800;">
-                                <h5 style="padding:0px; margin:0px;">Trend:</h5 style="padding:0px; margin:0px;"><h5 id="card2_trend"><?=trenddata($sheetData,13);?></h5>
+                                <h5 style="padding:0px; margin:0px;">Trend:</h5 style="padding:0px; margin:0px;"><h5 id="card2_trend" style="color:<?=get_trend_color(trenddata($sheetData,13));?>"><?=trenddata($sheetData,13);?></h5>
                                 <h6 style=" font-weight:bold;">Break out Point/<br>Magical Figures</h6><b><span id="edit_nifty2_magic" style="font-size:20px; font-weight:bold;"><?= $sheetData[15][6];?></b>
                             </div>
                         
